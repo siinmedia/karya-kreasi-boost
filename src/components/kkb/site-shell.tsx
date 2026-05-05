@@ -20,13 +20,15 @@ export function SiteHeader() {
           to="/"
           className="group flex min-w-0 items-center gap-3 focus:outline-none focus-visible:ring-4 focus-visible:ring-ring"
         >
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border bg-card p-1.5 transition-transform group-hover:-translate-y-0.5 sm:h-14 sm:w-14">
+          {/* LOGO TANPA BORDER */}
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg p-1.5 transition-transform group-hover:-translate-y-0.5 sm:h-14 sm:w-14">
             <img
               src={kkbLogo}
               alt="Logo Karya Kreasi Bersama"
               className="h-full w-full object-contain"
             />
           </span>
+
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-sm font-extrabold sm:text-base">
               Karya Kreasi Bersama
@@ -36,6 +38,7 @@ export function SiteHeader() {
             </span>
           </span>
         </Link>
+
         <nav className="hidden items-center gap-2 md:flex" aria-label="Navigasi utama">
           {secondaryNavItems.map((item) => (
             <Link
@@ -49,6 +52,7 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+
         <a
           className="btn-neo btn-neo-primary hidden sm:inline-flex"
           href={makeWhatsappLink()}
@@ -58,6 +62,7 @@ export function SiteHeader() {
           WhatsApp
         </a>
       </div>
+
       <nav className="grid grid-cols-3 gap-2 px-4 pb-3 md:hidden" aria-label="Navigasi mobile">
         {secondaryNavItems.map((item) => (
           <Link
@@ -82,17 +87,20 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
+              {/* LOGO TANPA BORDER */}
               <img
                 src={kkbLogo}
                 alt="Logo KKB"
-                className="h-12 w-12 rounded-md border bg-card object-contain p-1"
+                className="h-12 w-12 object-contain"
               />
               <p className="text-lg font-extrabold">Karya Kreasi Bersama</p>
             </div>
+
             <p className="mt-4 max-w-sm text-sm font-medium leading-relaxed text-muted-foreground">
               Solusi gerobak usaha modern & siap pakai untuk brand kuliner, minuman, dan retail.
             </p>
           </div>
+
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               Navigasi
@@ -110,6 +118,7 @@ export function SiteFooter() {
               ))}
             </ul>
           </div>
+
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               Kontak
@@ -120,6 +129,7 @@ export function SiteFooter() {
               <li>Senin – Sabtu, 09.00 – 17.00</li>
             </ul>
           </div>
+
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               Mulai proyek
@@ -134,6 +144,7 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
+
         <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-xs font-medium text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Karya Kreasi Bersama. All rights reserved.</p>
           <p>Workshop kreatif gerobak usaha modern.</p>
