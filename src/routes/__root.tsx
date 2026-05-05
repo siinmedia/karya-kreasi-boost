@@ -1,5 +1,4 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -7,16 +6,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Halaman tidak ditemukan</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
-            Go home
+            Kembali ke Beranda
           </Link>
         </div>
       </div>
@@ -29,40 +28,58 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+
+      // SEO TITLE
+      {
+        title: "Jasa Pembuatan Gerobak Custom & Kanopi | KKB - Karya Kreasi Bersama",
+      },
+
+      // SEO DESCRIPTION
       {
         name: "description",
-        content: "KKB Business Wheels is a modern, ready-to-use business cart website.",
+        content:
+          "KKB - Karya Kreasi Bersama melayani pembuatan gerobak usaha custom, kanopi, pagar, dan furniture. Desain modern, kuat, dan siap pakai untuk bisnis Anda.",
       },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
+
+      { name: "author", content: "KKB - Karya Kreasi Bersama" },
+
+      // OPEN GRAPH (WA / FB / IG)
+      {
+        property: "og:title",
+        content: "KKB - Jasa Gerobak Custom & Kanopi Modern",
+      },
       {
         property: "og:description",
-        content: "KKB Business Wheels is a modern, ready-to-use business cart website.",
+        content:
+          "Workshop profesional pembuatan gerobak usaha, kanopi, dan pagar dengan desain modern & siap pakai.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
+      { property: "og:locale", content: "id_ID" },
+
+      // TWITTER
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "KKB - Gerobak Custom & Kanopi Modern",
+      },
       {
         name: "twitter:description",
-        content: "KKB Business Wheels is a modern, ready-to-use business cart website.",
-      },
-      {
-        property: "og:image",
         content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1ccaa59c-b6d0-4cae-837b-f686721542cf/id-preview-aea62b1d--47d94080-2f5d-45e6-b9ad-675099c86296.lovable.app-1777437029905.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1ccaa59c-b6d0-4cae-837b-f686721542cf/id-preview-aea62b1d--47d94080-2f5d-45e6-b9ad-675099c86296.lovable.app-1777437029905.png",
+          "Jasa pembuatan gerobak usaha, kanopi, dan pagar dengan desain modern dan harga terjangkau.",
       },
     ],
+
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+
+      // ✅ FAVICON
+      {
+        rel: "icon",
+        href: "https://files.catbox.moe/ubdlw4.ico",
+        type: "image/x-icon",
       },
     ],
   }),
@@ -73,7 +90,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <HeadContent />
       </head>
