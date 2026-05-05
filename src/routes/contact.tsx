@@ -50,14 +50,14 @@ function ContactPage() {
                 <div className="neo-card neo-card-yellow p-6">
                   <p className="font-bold">Workshop KKB</p>
                   <p className="mt-2 font-medium text-muted-foreground">
-                    Jl. Workshop Kreatif No. 18, Indonesia
+                    Karang Rejo, Damarjati, Kalinyamatan, Jepara Regency, Central Java 59462
                   </p>
                 </div>
                 <div className="rounded-lg border bg-background px-4 py-3">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Email
                   </p>
-                  <p className="mt-1 font-medium">hello@karyakreasibersama.id</p>
+                  <p className="mt-1 font-medium">mail@karykakreasi.web.id</p>
                 </div>
                 <div className="rounded-lg border bg-background px-4 py-3">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">

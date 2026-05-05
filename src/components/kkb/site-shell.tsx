@@ -115,8 +115,8 @@ export function SiteFooter() {
               Kontak
             </p>
             <ul className="mt-4 grid gap-2 text-sm font-medium text-foreground/80">
-              <li>Jl. Workshop Kreatif No. 18, Indonesia</li>
-              <li>hello@karyakreasibersama.id</li>
+              <li>Karang Rejo, Damarjati, Kalinyamatan, Jepara Regency, Central Java 59462</li>
+              <li>mail@karykakreasi.web.id</li>
               <li>Senin – Sabtu, 09.00 – 17.00</li>
             </ul>
           </div>
