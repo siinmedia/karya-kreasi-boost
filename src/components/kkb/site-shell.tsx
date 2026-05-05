@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import kkbLogo from "../../assets/kkb-logo.png";
 import { makeWhatsappLink } from "../../data/products";
 import { AnnouncementBar } from "./announcement-bar";
@@ -19,8 +19,13 @@ export function SiteHeader() {
   const isActive = (to: string) =>
     pathname === to || (to !== "/" && pathname.startsWith(to));
 
+  // 🔥 LOCK SCROLL SAAT MENU BUKA
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b bg-card/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b bg-card/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         
         {/* LOGO */}
@@ -40,9 +45,9 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition ${
+              className={`px-4 py-2 rounded-md text-sm font-semibold ${
                 isActive(item.to)
-                  ? "bg-brand-blue text-white shadow"
+                  ? "bg-brand-blue text-white"
                   : "hover:bg-muted"
               }`}
             >
@@ -63,83 +68,66 @@ export function SiteHeader() {
         {/* HAMBURGER */}
         <button
           onClick={() => setOpen(true)}
-          className="md:hidden text-xl"
+          className="md:hidden text-2xl"
         >
           ☰
         </button>
       </div>
 
-      {/* MOBILE DRAWER */}
-      {open && (
-        <div className="fixed inset-0 z-50">
-          
-          {/* OVERLAY */}
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={() => setOpen(false)}
-          />
+      {/* 🔥 MOBILE DRAWER FIXED */}
+      <div
+        className={`fixed inset-0 z-[999] transition ${
+          open ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* OVERLAY */}
+        <div
+          onClick={() => setOpen(false)}
+          className={`absolute inset-0 bg-black/50 transition-opacity ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
-          {/* MENU PANEL */}
-          <div className="absolute right-0 top-0 h-full w-[75%] max-w-xs bg-white p-5 shadow-xl flex flex-col gap-4">
-            
-            {/* HEADER */}
-            <div className="flex justify-between items-center">
-              <p className="font-bold">Menu</p>
-              <button onClick={() => setOpen(false)}>✕</button>
-            </div>
-
-            {/* NAV ITEMS */}
-            <nav className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  className={`px-4 py-3 rounded-md font-semibold text-sm transition ${
-                    isActive(item.to)
-                      ? "bg-brand-blue text-white"
-                      : "bg-gray-100"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* CTA */}
-            <a
-              href={makeWhatsappLink()}
-              target="_blank"
-              className="mt-auto text-center bg-black text-white py-3 rounded-md font-semibold"
-            >
-              Konsultasi WhatsApp
-            </a>
+        {/* PANEL */}
+        <div
+          className={`absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white p-5 flex flex-col gap-4 shadow-xl transition-transform ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* HEADER */}
+          <div className="flex items-center justify-between">
+            <p className="font-bold text-lg">Menu</p>
+            <button onClick={() => setOpen(false)}>✕</button>
           </div>
+
+          {/* NAV */}
+          <nav className="flex flex-col gap-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className={`px-4 py-3 rounded-xl font-semibold transition ${
+                  isActive(item.to)
+                    ? "bg-brand-blue text-white"
+                    : "bg-gray-100"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA */}
+          <a
+            href={makeWhatsappLink()}
+            target="_blank"
+            className="mt-auto text-center bg-black text-white py-3 rounded-xl font-semibold"
+          >
+            Konsultasi WhatsApp
+          </a>
         </div>
-      )}
-    </header>
-  );
-}
-
-export function SiteFooter() {
-  return (
-    <footer className="border-t bg-card text-foreground">
-      <div className="section-container py-12">
-        <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} KKB - Karya Kreasi Bersama
-        </p>
       </div>
-    </footer>
-  );
-}
-
-export function PageFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBar />
-      <SiteHeader />
-      {children}
-      <SiteFooter />
-    </div>
+    </header>
   );
 }
