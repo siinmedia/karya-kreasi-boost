@@ -17,7 +17,7 @@ export type Product = {
   accent: "yellow" | "purple" | "blue";
 };
 
-export const whatsappNumber = "6281234567890";
+export const whatsappNumber = "6285155145788";
 
 export const products: Product[] = [
   {
